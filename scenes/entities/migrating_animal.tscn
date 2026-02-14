@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bell1srnbac57"]
 
 [ext_resource type="Script" uid="uid://bw4hbc1mbcqxb" path="res://scenes/entities/migrating_animal.gd" id="1_4fd3b"]
-[ext_resource type="Texture2D" uid="uid://duybx42p3f2q" path="res://icon.svg" id="1_be7ra"]
+[ext_resource type="Texture2D" uid="uid://duybx42p3f2q" path="res://art/test/icon.svg" id="1_be7ra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rypps"]
 size = Vector2(137, 135)
