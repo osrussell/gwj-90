@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://djqio4p83e5y8" path="res://scenes/levels/level_1/level_1.gd" id="1_5o1mp"]
 [ext_resource type="Texture2D" uid="uid://d1f4lqrnrv0cf" path="res://art/test/IMG_1480.JPG" id="1_x3ahk"]
-[ext_resource type="Script" uid="uid://dsvghs3qkpyq6" path="res://scenes/levels/level_1/path_spawner.gd" id="2_fngju"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fngju"]
+radius = 56.302753
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_5o1mp")
@@ -13,15 +15,119 @@ scale = Vector2(1.6191666, 1.2244444)
 texture = ExtResource("1_x3ahk")
 
 [node name="PathSpawner" type="Node2D" parent="."]
-script = ExtResource("2_fngju")
 
-[node name="Timer" type="Timer" parent="PathSpawner"]
+[node name="AnimalTimer" type="Timer" parent="PathSpawner"]
 autostart = true
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 
-[node name="Timer" type="Timer" parent="EnemySpawner"]
+[node name="EnemyTimer" type="Timer" parent="EnemySpawner"]
+wait_time = 0.5
 autostart = true
 
-[connection signal="new_spawn" from="PathSpawner" to="." method="_on_path_spawner_new_spawn"]
-[connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
+[node name="EnemyStartPositions" type="Node2D" parent="EnemySpawner"]
+
+[node name="StartPos" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(230, -82)
+
+[node name="StartPos2" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(575, -82)
+
+[node name="StartPos3" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(1134, -58)
+
+[node name="StartPos4" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(1311, -58)
+
+[node name="StartPos5" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(1686, -59)
+
+[node name="StartPos6" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(2008, 201)
+
+[node name="StartPos7" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(2008, 894)
+
+[node name="StartPos8" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(2008, 1018)
+
+[node name="StartPos9" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(1677, 1155)
+
+[node name="StartPos10" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(1316, 1137)
+
+[node name="StartPos11" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(785, 1141)
+
+[node name="StartPos12" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(181, 1143)
+
+[node name="StartPos13" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(-88, 1006)
+
+[node name="StartPos14" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(-96, 853)
+
+[node name="StartPos15" type="Marker2D" parent="EnemySpawner/EnemyStartPositions"]
+position = Vector2(-74, -113)
+
+[node name="EnemyEndPositions" type="Node2D" parent="EnemySpawner"]
+
+[node name="EndPos" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(217, 238)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos"]
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos2" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(521, 195)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos2"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos3" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(802, 358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos3"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos4" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(512, 565)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos4"]
+position = Vector2(-4, 3)
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos5" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(1268, 499)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos5"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos6" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(1086, 682)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos6"]
+position = Vector2(-4, -2)
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos7" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(704, 850)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos7"]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_fngju")
+
+[node name="EndPos8" type="Area2D" parent="EnemySpawner/EnemyEndPositions" groups=["end_positions"]]
+position = Vector2(1706, 478)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyEndPositions/EndPos8"]
+position = Vector2(-3, 5)
+shape = SubResource("CircleShape2D_fngju")
+
+[connection signal="timeout" from="PathSpawner/AnimalTimer" to="." method="_on_animal_timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
