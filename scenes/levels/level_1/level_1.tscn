@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx1oy43yflcs"]
+
+[ext_resource type="Texture2D" uid="uid://d1f4lqrnrv0cf" path="res://art/test/IMG_1480.JPG" id="1_x3ahk"]
+[ext_resource type="Script" uid="uid://dsvghs3qkpyq6" path="res://scenes/levels/level_1/path_spawner.gd" id="2_fngju"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Img1480" type="Sprite2D" parent="."]
+position = Vector2(961.5, 541)
+scale = Vector2(1.6191666, 1.2244444)
+texture = ExtResource("1_x3ahk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="PathSpawner" type="Node2D" parent="."]
+script = ExtResource("2_fngju")
+
+[node name="Timer" type="Timer" parent="PathSpawner"]
+autostart = true
+
+[connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
