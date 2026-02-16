@@ -1,17 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bell1srnbac57"]
+[gd_scene load_steps=5 format=3 uid="uid://bell1srnbac57"]
 
 [ext_resource type="Script" uid="uid://bw4hbc1mbcqxb" path="res://scenes/entities/migrating_animal.gd" id="1_4fd3b"]
 [ext_resource type="Texture2D" uid="uid://duybx42p3f2q" path="res://art/test/icon.svg" id="1_be7ra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rypps"]
-size = Vector2(137, 135)
+size = Vector2(84, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fd3b"]
+size = Vector2(95, 92)
 
 [node name="MigratingAnimal" type="CharacterBody2D"]
 script = ExtResource("1_4fd3b")
 
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1.0000019, -1.0000019)
+scale = Vector2(0.71875, 0.703125)
+texture = ExtResource("1_be7ra")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_rypps")
 
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_be7ra")
+[node name="DeathArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_4fd3b")
+
+[connection signal="area_entered" from="DeathArea" to="." method="_on_death_area_area_entered"]

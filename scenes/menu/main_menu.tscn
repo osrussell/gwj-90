@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3pql28aatio7"]
+
+[ext_resource type="Script" uid="uid://8ggm523cuuwj" path="res://scenes/menu/main_menu.gd" id="1_nl8w3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nl8w3")
+
+[node name="MainButtons" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -182.5
+offset_right = 158.5
+offset_bottom = 182.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainButtons"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Play"
+
+[node name="Settings" type="Button" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Settings"
+
+[node name="Controls" type="Button" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Controls"
+
+[node name="Credits" type="Button" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 81
+text = "Credits"

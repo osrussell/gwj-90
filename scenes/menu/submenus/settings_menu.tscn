@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://0e5vd2qw0ksx"]
+
+[ext_resource type="Script" uid="uid://7470pdqefck1" path="res://scenes/menu/submenus/settings_menu.gd" id="1_hy6mm"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1028.0
+offset_bottom = -477.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hy6mm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MasterVolLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterVolume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicVolume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SELabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound Effects Volume"
+
+[node name="SoundEffects" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MuteLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mute"
+
+[node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resolutions"
+
+[node name="Resolutions" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+
+[node name="FullScreenLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Full Screen"
+
+[node name="FullScreen" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MasterVolume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolutions" to="." method="_on_resolutions_item_selected"]

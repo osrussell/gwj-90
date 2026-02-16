@@ -1,29 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://yibfwmwqku38"]
+[gd_scene load_steps=7 format=3 uid="uid://yibfwmwqku38"]
 
 [ext_resource type="Texture2D" uid="uid://duybx42p3f2q" path="res://art/test/icon.svg" id="1_8rc58"]
 [ext_resource type="Script" uid="uid://bv33ajkismcy7" path="res://scenes/entities/basic_enemy.gd" id="1_fgyre"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgyre"]
-size = Vector2(140, 137)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_fgyre"]
 radius = 557.0323
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgyre"]
+size = Vector2(73.5, 69.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwnh0"]
+size = Vector2(87, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsjnl"]
+size = Vector2(85, 86)
 
 [node name="BasicEnemy" type="CharacterBody2D"]
 script = ExtResource("1_fgyre")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(-9.536743e-07, 9.536743e-07)
+scale = Vector2(1, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_fgyre")
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, -1)
+position = Vector2(0.74999523, -0.49999553)
+scale = Vector2(0.63671875, 0.6328125)
 texture = ExtResource("1_8rc58")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -1.5)
+position = Vector2(0.25, -0.75)
 shape = SubResource("RectangleShape2D_fgyre")
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="ClickArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_fgyre")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_qwnh0")
+
+[node name="KillArea" type="Area2D" parent="." groups=["enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_fsjnl")
 
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
